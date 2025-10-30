@@ -1,23 +1,14 @@
 name: Build Images
 
 on:
-  push:
-    branches:
-      - 'main'
-      - 'master'
-      - 'dev'
-      - 'feat/*'
-      - 'canary'
-  workflow_call:
+  workflow_dispatch:
     inputs:
       build-type:
-        type: string
-        required: true
         default: "stable"
+        description: "The build type of the images. Can be 'stable', 'beta', or 'alpha'."
       app-version:
-        type: string
-        required: true
         default: "0.25.2"
+        description: "The application version to set during the build."
 
 permissions:
   contents: 'write'
