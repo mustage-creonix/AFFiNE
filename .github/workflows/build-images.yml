@@ -1,6 +1,13 @@
 name: Build Images
 
 on:
+  push:
+    branches:
+      - 'main'
+      - 'master'
+      - 'dev'
+      - 'feat/*'
+      - 'canary'
   workflow_call:
     inputs:
       build-type:
@@ -9,6 +16,8 @@ on:
       app-version:
         type: string
         required: true
+# stable
+# 0.25.2
 
 permissions:
   contents: 'write'
