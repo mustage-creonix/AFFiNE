@@ -13,11 +13,11 @@ on:
       build-type:
         type: string
         required: true
+        default: "stable"
       app-version:
         type: string
         required: true
-# stable
-# 0.25.2
+        default: "0.25.2"
 
 permissions:
   contents: 'write'
