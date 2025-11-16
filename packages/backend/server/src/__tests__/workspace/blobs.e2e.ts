@@ -14,7 +14,7 @@ import {
   TestingApp,
 } from '../utils';
 
-const OneMB = 1024 * 1024;
+const OneMB = 1024 * 1024 * 1024;
 const RESTRICTED_QUOTA = {
   seatQuota: 0,
   blobLimit: OneMB,

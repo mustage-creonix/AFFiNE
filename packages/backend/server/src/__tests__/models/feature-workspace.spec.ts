@@ -54,7 +54,7 @@ test('should get workspace quota', async t => {
   const { model, ws } = t.context;
 
   await model.add(ws.id, 'team_plan_v1', 'test', {
-    memberLimit: 100,
+    memberLimit: 999,
   });
 
   const quota = await model.getQuota(ws.id);
@@ -107,11 +107,11 @@ test('should add workspace feature with overrides', async t => {
 
   await model.add(ws.id, 'team_plan_v1', 'test');
   const f1 = await model.get(ws.id, 'team_plan_v1');
-  await model.add(ws.id, 'team_plan_v1', 'test', { memberLimit: 100 });
+  await model.add(ws.id, 'team_plan_v1', 'test', { memberLimit: 999 });
   const f2 = await model.get(ws.id, 'team_plan_v1');
 
   t.not(f1!.configs.memberLimit, f2!.configs.memberLimit);
-  t.is(f2!.configs.memberLimit, 100);
+  t.is(f2!.configs.memberLimit, 999);
 });
 
 test('should not add existing workspace feature', async t => {
@@ -126,11 +126,11 @@ test('should not add existing workspace feature', async t => {
 test('should replace existing workspace if overrides updated', async t => {
   const { model, ws } = t.context;
 
-  await model.add(ws.id, 'team_plan_v1', 'test', { memberLimit: 10 });
-  await model.add(ws.id, 'team_plan_v1', 'test', { memberLimit: 100 });
+  await model.add(ws.id, 'team_plan_v1', 'test', { memberLimit: 999 });
+  await model.add(ws.id, 'team_plan_v1', 'test', { memberLimit: 999 });
   const f2 = await model.get(ws.id, 'team_plan_v1');
 
-  t.is(f2!.configs.memberLimit, 100);
+  t.is(f2!.configs.memberLimit, 999);
 });
 
 test('should remove workspace feature', async t => {

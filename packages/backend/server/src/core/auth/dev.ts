@@ -80,7 +80,7 @@ export async function createDevUsers(models: Models) {
               editorId: devUser.id,
             });
             await models.workspaceFeature.add(workspace.id, feature, name, {
-              memberLimit: 10,
+              memberLimit: 999,
             });
           }
         }

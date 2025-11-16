@@ -165,6 +165,7 @@ export class CloudBlobStorage extends BlobStorageBase {
         variables: { id: this.options.id },
       });
 
+      
       this.humanReadableBlobSizeLimitCache =
         res.workspace.quota.humanReadable.blobLimit;
       this.blobSizeLimitCache = res.workspace.quota.blobLimit;

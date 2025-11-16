@@ -110,7 +110,7 @@ test('should update feature', async t => {
     'free_plan_v1',
     {
       ...freePlanFeature.configs,
-      memberLimit: 10,
+      memberLimit: 999,
     },
     FeatureType.Quota,
     1
@@ -118,7 +118,7 @@ test('should update feature', async t => {
 
   t.deepEqual(newFreePlanFeature.configs, {
     ...freePlanFeature.configs,
-    memberLimit: 10,
+    memberLimit: 999,
   });
 });
 
