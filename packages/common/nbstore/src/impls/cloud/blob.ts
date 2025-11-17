@@ -152,6 +152,9 @@ export class CloudBlobStorage extends BlobStorageBase {
   private blobSizeLimitCache: number | null = null;
   private blobSizeLimitCacheTime = 0;
   private async getBlobSizeLimit() {
+    const OneGB = 1024 * 1024 * 1024;
+
+
     // If cache time is less than 120 seconds, return the cached value directly
     if (
       this.blobSizeLimitCache !== null &&
@@ -159,6 +162,8 @@ export class CloudBlobStorage extends BlobStorageBase {
     ) {
       return this.blobSizeLimitCache;
     }
+
+    /*
     try {
       const res = await this.connection.gql({
         query: workspaceBlobQuotaQuery,
@@ -173,5 +178,11 @@ export class CloudBlobStorage extends BlobStorageBase {
     } catch (err) {
       throw UserFriendlyError.fromAny(err);
     }
+    */    // Temporary fixed value for 1GB
+    const fixedBlobLimit = OneGB;
+    this.humanReadableBlobSizeLimitCache = '1 GB';
+    this.blobSizeLimitCache = fixedBlobLimit;
+    this.blobSizeLimitCacheTime = Date.now();
+    return this.blobSizeLimitCache;
   }
 }
