@@ -1050,7 +1050,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.auth.open.affine"](): string;
     /**
-      * `Download our app`
+      * `Download app`
       */
     ["com.affine.auth.open.affine.download-app"](): string;
     /**
@@ -2922,7 +2922,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.other-page.nav.contact-us"](): string;
     /**
-      * `Download our app`
+      * `Download app`
       */
     ["com.affine.other-page.nav.download-app"](): string;
     /**

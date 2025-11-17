@@ -37,7 +37,7 @@ export function AppDownloadButton({
     >
       <div className={clsx([styles.label])}>
         <DownloadIcon className={styles.icon} />
-        <span className={styles.ellipsisTextOverflow}>Download our App</span>
+        <span className={styles.ellipsisTextOverflow}>Download App</span>
       </div>
       <div className={styles.closeIcon} onClick={handleClose}>
         <CloseIcon />
