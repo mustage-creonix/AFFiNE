@@ -35,10 +35,10 @@ export class CloudBlobStorage extends BlobStorageBase {
   override async get(key: string, signal?: AbortSignal) {
     const res = await this.connection.fetch(
       '/api/workspaces/' +
-        this.options.id +
-        '/blobs/' +
-        key +
-        (SHOULD_MANUAL_REDIRECT ? '?redirect=manual' : ''),
+      this.options.id +
+      '/blobs/' +
+      key +
+      (SHOULD_MANUAL_REDIRECT ? '?redirect=manual' : ''),
       {
         cache: 'default',
         headers: {
@@ -95,7 +95,7 @@ export class CloudBlobStorage extends BlobStorageBase {
     try {
       const blobSizeLimit = await this.getBlobSizeLimit();
       if (blob.data.byteLength > blobSizeLimit) {
-        throw new OverSizeError(this.humanReadableBlobSizeLimitCache);
+        // throw new OverSizeError(this.humanReadableBlobSizeLimitCache);
       }
       await this.connection.gql({
         query: setBlobMutation,
@@ -165,9 +165,8 @@ export class CloudBlobStorage extends BlobStorageBase {
         variables: { id: this.options.id },
       });
 
-      
-      this.humanReadableBlobSizeLimitCache =
-        res.workspace.quota.humanReadable.blobLimit;
+
+      this.humanReadableBlobSizeLimitCache = res.workspace.quota.humanReadable.blobLimit;
       this.blobSizeLimitCache = res.workspace.quota.blobLimit;
       this.blobSizeLimitCacheTime = Date.now();
       return this.blobSizeLimitCache;
